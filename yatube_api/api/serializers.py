@@ -1,9 +1,5 @@
+from posts.models import Comment, Group, Post, User
 from rest_framework import serializers
-from rest_framework.validators import UniqueTogetherValidator
-
-import datetime as dt
-
-from posts.models import Group, Post, Comment, User
 
 
 class UserSerializer(serializers.ModelSerializer):

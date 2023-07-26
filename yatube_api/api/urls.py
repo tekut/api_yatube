@@ -1,16 +1,10 @@
+from api.views import CommentViewSet, GroupViewSet, PostViewSet, UserViewSet
 from django.conf import settings
 from django.conf.urls.static import static
-
-from rest_framework import routers
-
 from django.contrib import admin
 from django.urls import include, path
-
-from api.views import (UserViewSet,
-                       PostViewSet,
-                       GroupViewSet,
-                       CommentViewSet,
-                       )
+from rest_framework import routers
+from rest_framework.authtoken import views
 
 
 router = routers.DefaultRouter()
@@ -26,17 +20,8 @@ urlpatterns = [
     path('v1/', include(router.urls)),
     path('v1/', include('djoser.urls')),
     path('v1/', include('djoser.urls.jwt')),
+    path('v1/api-token-auth/', views.obtain_auth_token),
 ]
-
-
-#urlpatterns = [
-#    path('admin/', admin.site.urls),
-#    path('', include(router.urls)),
-#    path('api/', include(router.urls)),
-#    path('auth/', include('djoser.urls')),
-#    path('auth/', include('djoser.urls.jwt')),
-#]
-
 
 if settings.DEBUG:
     urlpatterns += static(
