@@ -20,13 +20,22 @@ router.register(r'groups', GroupViewSet)
 router.register(r'^posts/(?P<post_id>\d+)/comments',
                 CommentViewSet, basename='comments')
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('api/', include(router.urls)),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('v1/', include(router.urls)),
+    path('v1/', include('djoser.urls')),
+    path('v1/', include('djoser.urls.jwt')),
 ]
+
+
+#urlpatterns = [
+#    path('admin/', admin.site.urls),
+#    path('', include(router.urls)),
+#    path('api/', include(router.urls)),
+#    path('auth/', include('djoser.urls')),
+#    path('auth/', include('djoser.urls.jwt')),
+#]
 
 
 if settings.DEBUG:
