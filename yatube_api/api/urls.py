@@ -6,12 +6,19 @@ from rest_framework import routers
 from django.contrib import admin
 from django.urls import include, path
 
-from api.views import UserViewSet, PostViewSet
+from api.views import (UserViewSet,
+                       PostViewSet,
+                       GroupViewSet,
+                       CommentViewSet,
+                       )
 
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'posts', PostViewSet)
+router.register(r'groups', GroupViewSet)
+router.register(r'^posts/(?P<post_id>\d+)/comments',
+                CommentViewSet, basename='comments')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
